@@ -35,8 +35,11 @@ class UserSeeder extends Seeder
                 'is_agent' => $user['is_agent'],
             ]);
         });
-
+        // Create User with a state
         factory(User::class)->state('is_admin')->create();
         factory(User::class)->state('is_agent')->create();
+
+        // Create General User
+        factory(User::class, 100)->create();
     }
 }
