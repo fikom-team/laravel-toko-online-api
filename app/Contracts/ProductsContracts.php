@@ -10,16 +10,8 @@ use Illuminate\Pagination\LengthAwarePaginator;
 interface ProductsContracts
 {
     /**
-     * Add a Products
-     *
-     * @return void
-     */
-    public function add(): void;
-
-    /**
      * Get All Products
-     *
-     * @return App\Products
+     * @return LengthAwarePaginator
      */
     public function all() : LengthAwarePaginator;
 
@@ -29,4 +21,12 @@ interface ProductsContracts
      * @param int $id
      */
     public function show(int $id);
+
+    /**
+     * Save Products To Database
+     *
+     * @param array $products
+     * @return Product
+     */
+    public function create(array $products) : Product ;
 }

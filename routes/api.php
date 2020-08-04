@@ -28,5 +28,6 @@ Route::prefix('products')
     ->name('products')
     ->group(function() {
         Route::get('/' , [ProductController::class , 'index'])->name('products');
+        Route::get('/create' , [ProductController::class , 'store'])->name('product.store');
         Route::get('/{id}' , [ProductController::class , 'show'])->name('product.show');
     });

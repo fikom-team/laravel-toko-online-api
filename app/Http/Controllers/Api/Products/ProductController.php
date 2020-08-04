@@ -6,21 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductResource;
 use App\Repostory\Products;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ProductController extends Controller
 {
     /**
      * Get All Products
-     * @param  App\Repostory\Products;
-     * @return App\Http\Resource\ProductsResource;
+     * @param Products $product
+     * @return AnonymousResourceCollection
      */
     public function index(Products $product)
     {
-        if (!$product) {
-            return response()->json([
-                'message' => 'oops',
-            ]);
-        }
         return ProductResource::collection($product->all());
     }
 
@@ -28,7 +24,7 @@ class ProductController extends Controller
      * Show Products
      *
      * @param int $id,
-     * @return App\Http\Resource\Products
+     * @return ProductResource
      */
     public function show($id)
     {

@@ -4,9 +4,8 @@ namespace App\Repostory;
 
 use App\Contracts\ProductsContracts;
 use App\Product;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+
 
 class Products implements ProductsContracts
 {
@@ -21,7 +20,9 @@ class Products implements ProductsContracts
         return Product::with('user')->find($id);
     }
 
-    public function add(): void
+    public function create(array $products): Product
     {
+        return Product::create($products);
     }
+
 }
