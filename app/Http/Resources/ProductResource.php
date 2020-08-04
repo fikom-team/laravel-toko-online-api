@@ -21,7 +21,7 @@ class ProductResource extends JsonResource
             'unit_in_stock'  => $this->unit_in_stock,
             'unit_price'     => $this->unit_price,
             'quantity_price' => $this->quantity_price,
-            'formatted_price'=> number_format($this->unit_price , 2),
+            'formatted_price'=> 'Rp ' . number_format($this->unit_price , 2),
             'desc'           => $this->desc,
             'user'           => UserResource::make($this->user),
         ];
