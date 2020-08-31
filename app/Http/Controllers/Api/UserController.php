@@ -20,8 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::with('profile');
-
+        $user = User::with('profile', 'products');
         return UserResource::collection($user->paginate());
     }
 
@@ -51,7 +50,6 @@ class UserController extends Controller
     {
         $user = User::with(['profile', 'products'])
             ->find($id);
-
         return new UserResource($user);
     }
 

@@ -2,10 +2,19 @@
 
 namespace App\Providers;
 
+use App\Contracts\ProductsContracts;
+use App\Repostory\Products;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    /**
+     * @var string[]
+     */
+    public $singletons = [
+        ProductsContracts::class => Products::class
+    ];
+
     /**
      * Register any application services.
      *
@@ -13,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        app()->bind(ProductsContracts::class , Products::class);
     }
 
     /**
